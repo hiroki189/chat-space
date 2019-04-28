@@ -1,24 +1,25 @@
 .wrapper
 .flash
-  .chat-side
-    .side-header
-      %p.side-header_user-name
-        サンプル
-      %ul.user-menu
-        %li.user-menu_edit-user.fa.fa-pencil-square-o
-        %li.user-menu_new-group.fa.fa-cog
-    .groups
-  .chat-main
-    .main-header
-      .current-group
-        %h2.current-group__name
-          sample
-        %ul.member-list
-      .main-header__edit-btn
-        Edit
-    .messages
-    .form
-      .input-box
-        .input-box_text
-          %li.image-label.fa.fa-image.fa-2x
-        .new-message_submit
+.chat-side
+  .chat-side__side-header
+    %p.chat-side__side-header_user-name
+      サンプル
+    %ul.chat-side__user-menu
+      %li.chat-side__user-menu_edit-user.fa.fa-pencil-square-o
+      %li.chat-side__user-menu_new-group.fa.fa-cog
+  .chat-side__groups
+.chat-main
+  .chat-main__header
+    .chat-main__header__current-group
+      %h2.chat-main__header__current-group_name
+        sample
+      %ul.chat-main__header__current-group_list
+    .chat-main__header__edit-btn
+      Edit
+  .messages
+  .form
+    .form__input-box
+      .form__input-box_text
+        %li.form__input-box_text_image-label.fa.fa-image.fa-2x
+      .form__input-box_submit
+        SEND
