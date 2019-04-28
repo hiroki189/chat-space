@@ -21,9 +21,12 @@
   justify-content: space-between;
   display: flex;
   font-weight: bold;
-    &_user-name{
-    margin: 0;
-    padding: 0;
+    &_user-menu{
+      display:flex;
+      &_name{
+        margin: 0;
+        padding: 0;
+        }
     }
   }
 &__groups{
