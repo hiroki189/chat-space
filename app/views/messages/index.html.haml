@@ -1,13 +1,7 @@
 .wrapper
 .flash
-.chat-side
-  .chat-side__side-header
-    %p.chat-side__side-header_user-name
-      サンプル
-    %ul.chat-side__user-menu
-      %li.chat-side__user-menu_edit-user.fa.fa-pencil-square-o
-      %li.chat-side__user-menu_new-group.fa.fa-cog
-  .chat-side__groups
+  = render partial: 'shared/side_bar'
+
 .chat-main
   .chat-main__header
     .chat-main__header__current-group
@@ -16,7 +10,7 @@
           sample
         %li.chat-main__header__current-group_user-menu_list
     .chat-main__header__edit-btn
-      Edit
+      = link_to 'Edit', "/groups/1/edit", class:"deno-none"
   .messages
   .form
     .form__input-box

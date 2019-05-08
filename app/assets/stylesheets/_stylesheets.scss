@@ -10,6 +10,7 @@
   width: 300px;
   color: white;
   float: left;
+
   &__side-header{
   padding: 0 20px;
   box-sizing: border-box;
@@ -23,20 +24,47 @@
   font-weight: bold;
     &_user-menu{
       display:flex;
+      }
       &_name{
         margin: 0;
         padding: 0;
-        }
-    }
+     }
   }
-&__groups{
+
+  .fa.fa-pencil-square-o{
+    color: white;
+  }
+  .fa.fa-cog{
+    color:white;
+  }
+  &__groups{
   height: calc(100vh - 100px);
   width: 300px;
   background-color:#2f3e51;
   padding: 40px 20px 0 20px ;
   box-sizing: border-box;
   overflow: scroll;
- }
+  }
+  &_group{
+    float: left;
+    margin-bottom: 40px;
+
+  .deco-none{
+    text-decoration: none;
+  }
+
+    &_name{
+      text-align: left;
+      color: white;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    &_message{
+      text-align: left;
+      color: white;
+      font-size: 11px;
+      }
+    }
 }
 
 .chat-main{
@@ -72,6 +100,11 @@
     margin-top: 30px;
     border: solid 1px #38aef0;
     color: #38aef0;
+
+    .deno-none{
+      text-decoration: none;
+      color: #38aef0;
+    }
     }
   }
 }
@@ -103,13 +136,13 @@
       color: #434a54;
       background-color: white;
       float: left;
-      &_image-label {
-        font-size: 1.3rem;
-        top: 10px;
-        position: relative;
-        cursor: pointer;
-        float: right;
-      }
+    &_image-label {
+      font-size: 1.3rem;
+      top: 10px;
+      position: relative;
+      cursor: pointer;
+      float: right;
+    }
     }
     &_submit{
     width: 100px;
