@@ -12,9 +12,12 @@
     .chat-main__header__edit-btn
       = link_to 'Edit', "/groups/1/edit", class:"deno-none"
   .messages
+    = render partial: 'messages/message', collection: @messages
   .form
-    .form__input-box
-      .form__input-box_text
-        %li.form__input-box_text_image-label.fa.fa-image.fa-2x
-      .form__input-box_submit
-        SEND
+    = form_for [@group, @message] do |f|
+      .form__input-box
+        = f.text_field :content, class: 'form__input-box_text', placeholder: 'type a message'
+        = f.label :image, class: 'form__input-box_text_image-label' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__input-box_submit'
