@@ -48,6 +48,7 @@
   &_group{
     float: left;
     margin-bottom: 40px;
+    width: 100%;
 
   .deco-none{
     text-decoration: none;
@@ -152,19 +153,20 @@
 
 .form{
   height: 90px;
-  background-color: #EEEEEE;
+  background-color: #ddd;
   padding: 20px 40px;
   box-sizing: border-box;
-  .form__message{
+  width: calc(100vw - 300px);
+  .new_message{
     display: flex;
   }
   &__input-box{
     position: relative;
-    width: 100%;
+    width: calc(100vw - 200px);
     display: flex;
     &_text{
       height: 50px;
-      width: 100%;
+      width: calc(100vw - 550px);
       padding: 0 40px 0 10px;
       border-style: none;
       color: #434a54;

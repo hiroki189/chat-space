@@ -17,3 +17,8 @@ module ChatSpace
     end
   end
 end
+
+config.action_view.field_error_proc = Proc.new do |haml_tag, instance|
+  %Q(#{haml_tag}).haml_safe
+end
+
