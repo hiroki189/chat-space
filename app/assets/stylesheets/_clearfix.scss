@@ -1,0 +1,6 @@
+@mixin clearfix(){
+  &:after {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+}
