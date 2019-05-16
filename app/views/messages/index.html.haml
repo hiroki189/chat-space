@@ -1,13 +1,7 @@
 .wrapper
 .flash
-.chat-side
-  .chat-side__side-header
-    %p.chat-side__side-header_user-name
-      サンプル
-    %ul.chat-side__user-menu
-      %li.chat-side__user-menu_edit-user.fa.fa-pencil-square-o
-      %li.chat-side__user-menu_new-group.fa.fa-cog
-  .chat-side__groups
+  = render partial: 'shared/side_bar'
+
 .chat-main
   .chat-main__header
     .chat-main__header__current-group
@@ -16,11 +10,14 @@
           sample
         %li.chat-main__header__current-group_user-menu_list
     .chat-main__header__edit-btn
-      Edit
+      = link_to 'Edit', "/groups/1/edit", class:"deno-none"
   .messages
+    = render partial: 'messages/message', collection: @messages
   .form
-    .form__input-box
-      .form__input-box_text
-        %li.form__input-box_text_image-label.fa.fa-image.fa-2x
-      .form__input-box_submit
-        SEND
+    = form_for [@group, @message] do |f|
+      .form__input-box
+        = f.text_field :content, class: 'form__input-box_text', placeholder: 'type a message'
+        = f.label :image, class: 'form__input-box_text_image-label' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__input-box_submit'

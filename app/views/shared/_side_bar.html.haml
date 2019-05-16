@@ -1,0 +1,17 @@
+.chat-side
+  .chat-side__side-header
+    %p.chat-side__side-header_user-name
+      = current_user.name
+    %ul.chat-side__user-menu
+      = link_to new_group_path do
+        %li.chat-side__user-menu_edit-user.fa.fa-pencil-square-o
+      = link_to edit_user_path(current_user) do
+        %li.chat-side__user-menu_new-group.fa.fa-cog
+  .chat-side__groups
+    - current_user.groups.each do |group|
+      .chat-side_group
+        = link_to group_messages_path(group), class: "deco-none" do
+          %p.chat-side_group_name
+            = group.name
+          %p.chat-side_group_message
+            = group.show_last_message
