@@ -36,8 +36,8 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('.form__input-box_text').val('');
       $('.form__input-box_submit').prop('disabled',false);
+      $('#new_message')[0].reset();
       scroll()
     })
     .fail(function(){
