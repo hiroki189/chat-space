@@ -124,7 +124,7 @@
     display: flex;
     margin-bottom: 10px;
     width: 100%;
-    height: 40px;
+    height: 20px;
     &__user-name{
       color: #434a54;
       font-size: 16px;
@@ -140,14 +140,15 @@
     }
   }
   &__text{
+    color: #434a54;
+    font-size: 14px;
+    margin-bottom: 10px;
 
   &__content{
     color: #434a54;
     font-size: 14px;
     margin-bottom: 10px;
     height: 20px;
-  }
-  &__image{
   }
   }
  }
