@@ -18,7 +18,6 @@ function appendNoUser(user) {
 }
 
 var member_list = $("#chat-group-users");
-var test = [member_list.find('.chat-group-user')];
 function addUser(userId,userName){
   var html = `<div class='chat-group-user clearfix js-chat-member' id='${userId}'>
                 <input name='group[user_ids][]' type='hidden' value='${userId}'>
