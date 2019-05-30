@@ -76,17 +76,18 @@
       box-sizing: border-box;
     }
   }
-
   .chat-group-user {
     padding: 0 15px;
     line-height: 50px;
-    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
     border-bottom: 1px solid #ddd;
     &:after {
       content: "";
       clear: both;
       display: block;
     }
+
 
     .chat-group-user__name {
       float: left;

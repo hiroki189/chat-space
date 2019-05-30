@@ -2,10 +2,9 @@ class MessagesController < ApplicationController
   before_action :set_group
 
   def index
-    @message = Message.new
+    @message = @group.messages.new
     @messages = @group.messages.includes(:user)
   end
-  
   def create
     @message = @group.messages.new(message_params)
     if @message.save
