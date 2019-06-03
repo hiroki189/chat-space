@@ -5,7 +5,6 @@ $(function(){
                   <p class = "upper-message__user-name">
                     ${ message.user_name}
                   </p>
-                  <p class = "upper-message__data">
                     ${ message.created_at }
                   </p>
                 </div>
@@ -47,13 +46,11 @@ $(function(){
   });
 
   var buildMessageHTML = function(message){
-    if(message.content && message.image){
       var html = '<div class = "message" data-id= '+ message.id + '>' +
                     '<div class = "upper-message">' +
                       '<p class = "upper-message__user-name">' +
                       message.user_name +
                       '</p>' +
-                      '<p class = "upper-message__data">' +
                       message.created_at +
                       '</p>' +
                     '</div>' +
@@ -61,7 +58,6 @@ $(function(){
                       '<p class = "message__text__content">' +
                       message.content +
                       '</p>' +
-                      '<img src ="' + message.image + '" class = "message__text__image" >' +
                       '</div>' +
                   '</div>'
   } else if (message.content) {
@@ -97,7 +93,6 @@ $(function(){
   };
     return html;
   };
-
   var reloadMessages = function(){
     last_message_id = $(".message:last").data('id');
      last_group = $(".chat-main__header__current-group_name").data('id');
