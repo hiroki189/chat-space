@@ -1,10 +1,12 @@
 $(function(){
   function buildHTML(message){
+  var imagehtml = message.image.url == null ? "" : `<img src = ${ message.image.url } class = "message__text__image">`
   var html = `<div class = "message">
                  <div class = "upper-message">
                   <p class = "upper-message__user-name">
                     ${ message.user_name}
                   </p>
+                  <p class = "upper-message__date">
                     ${ message.created_at }
                   </p>
                 </div>
@@ -12,7 +14,7 @@ $(function(){
                   <p class = "message__text__content">
                     ${ message.content}
                   </p>
-                  <img src = ${ message.image.url } class = "message__text__image">
+                  ${imagehtml}
                 </div>
             </div>`;
         return html;
@@ -44,55 +46,6 @@ $(function(){
       $('.form__input-box_submit').prop('disabled',false);
     });
   });
-
-  var buildMessageHTML = function(message){
-      var html = '<div class = "message" data-id= '+ message.id + '>' +
-                    '<div class = "upper-message">' +
-                      '<p class = "upper-message__user-name">' +
-                      message.user_name +
-                      '</p>' +
-                      message.created_at +
-                      '</p>' +
-                    '</div>' +
-                    '<div class = "message__text">' +
-                      '<p class = "message__text__content">' +
-                      message.content +
-                      '</p>' +
-                      '</div>' +
-                  '</div>'
-  } else if (message.content) {
-    var html = '<div class = "message" data-id= '+ message.id + '>' +
-                  '<div class = "upper-message">' +
-                    '<p class = "upper-message__user-name">' +
-                    message.user_name +
-                    '</p>' +
-                    '<p class = "upper-message__data">' +
-                    message.created_at +
-                    '</p>' +
-                  '</div>' +
-                  '<div class = "message__text">' +
-                    '<p class = "message__text__content">' +
-                    message.content +
-                    '</p>' +
-                  '</div>' +
-                '</div>'
-  } else if (message.image) {
-    var html = '<div class = "message" data-id= '+ message.id + '>' +
-                  '<div class = "upper-message">' +
-                    '<p class = "upper-message__user-name">' +
-                    message.user_name +
-                    '</p>' +
-                    '<p class = "upper-message__data">' +
-                    message.created_at +
-                    '</p>' +
-                  `</div>` +
-                  '<div class = "message__text">' +
-                    '<img src ="' + message.image + '" class = "message__text__image" >' +
-                  '</div>' +
-                '</div>'
-  };
-    return html;
-  };
   var reloadMessages = function(){
     last_message_id = $(".message:last").data('id');
      last_group = $(".chat-main__header__current-group_name").data('id');
@@ -106,7 +59,7 @@ $(function(){
     .done(function(messages){
       var insertHTML = '';
       messages.forEach(function(message){
-        var insertHTML = buildMessageHTML(message);
+        var insertHTML = buildHTML(message);
         $('.messages').append(insertHTML);
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       })
