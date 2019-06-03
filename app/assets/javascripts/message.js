@@ -1,30 +1,30 @@
 $(function(){
   function buildHTML(message){
+  var imagehtml = message.image.url == null ? "" : `<img src = ${ message.image.url } class = "message__text__image">`
   var html = `<div class = "message">
-                <div class = "upper-messsage">
-                  <div class = "upper-message__user-name">
+                 <div class = "upper-message">
+                  <p class = "upper-message__user-name">
                     ${ message.user_name}
-                  </div>
-                  <div class = "upper-message__date">
-                    ${ message.time }
-                  </div>
+                  </p>
+                  <p class = "upper-message__date">
+                    ${ message.created_at }
+                  </p>
                 </div>
                 <div class = " message__text">
                   <p class = "message__text__content">
                     ${ message.content}
                   </p>
+                  ${imagehtml}
                 </div>
             </div>`;
         return html;
-  }
-  function scroll(){
-    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
   }
 
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+
     $.ajax({
       url: url,
       type: "POST",
@@ -44,6 +44,29 @@ $(function(){
     })
     .always(function(){
       $('.form__input-box_submit').prop('disabled',false);
+    });
+  });
+  var reloadMessages = function(){
+    last_message_id = $(".message:last").data('id');
+     last_group = $(".chat-main__header__current-group_name").data('id');
+    $.ajax({
+      url: `/groups/${last_group}/api/messages`,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id,
+             group_id: last_group}
     })
-  })
-})
+    .done(function(messages){
+      var insertHTML = '';
+      messages.forEach(function(message){
+        var insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
+      })
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    });
+  };
+  setInterval(reloadMessages, 5000);
+});
