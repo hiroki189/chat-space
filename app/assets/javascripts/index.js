@@ -1,4 +1,3 @@
-$(document).on('turbolinks:load', function(){
 $(function(){
 
 var search_list = $("#user-search-result");
@@ -29,10 +28,18 @@ function addUser(userId,userName){
 
   $('#user-search-field').on("keyup",function(){
     var input = $('#user-search-field').val();
+    var user = $(".chat-group-user input").val();
+    var number = $(".chat-group-user").length;
+    var member = [];
+    for (var i=0; i<number; i++){
+      var host = $(".chat-group-user input").eq(i).val();
+      member.push(host)
+    }
     $.ajax({
       type: 'GET',
       url:  '/users',
-      data: {keyword: input},
+      data: {keyword: input,
+              member: member},
       dataType: 'json'
     })
 
@@ -63,5 +70,4 @@ function addUser(userId,userName){
     $(this).parent(".chat-group-user").remove();
   })
 });
-})
 
